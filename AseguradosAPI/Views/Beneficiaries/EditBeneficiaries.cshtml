@@ -1,0 +1,54 @@
+﻿@model AseguradosAPI.Models.EditBeneficiariesViewModel
+
+@{
+    ViewData["Title"] = "Editar Beneficiarios";
+}
+
+<h1>Editar Beneficiarios</h1>
+
+<div class="alert alert-danger" role="alert" style="display:@(ViewData.ModelState.IsValid ? "none" : "block")">
+    @Html.ValidationSummary()
+</div>
+
+<form asp-action="EditBeneficiaries" method="post">
+    <input type="hidden" asp-for="EmployeeId" />
+    <div class="row">
+        <div class="col-lg-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Participación (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Beneficiaries.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => m.Beneficiaries[i].FirstName)
+                                @Html.DisplayFor(m => m.Beneficiaries[i].LastName)
+                            </td>
+                            <td>
+                                <input asp-for="Beneficiaries[i].ParticipationPercentage" class="form-control" />
+                                <input type="hidden" asp-for="Beneficiaries[i].BeneficiaryId" />
+                                <input type="hidden" asp-for="Beneficiaries[i].FirstName" />
+                                <input type="hidden" asp-for="Beneficiaries[i].LastName" />
+                                <input type="hidden" asp-for="Beneficiaries[i].BirthDate" />
+                                <input type="hidden" asp-for="Beneficiaries[i].CURP" />
+                                <input type="hidden" asp-for="Beneficiaries[i].SSN" />
+                                <input type="hidden" asp-for="Beneficiaries[i].Phone" />
+                                <input type="hidden" asp-for="Beneficiaries[i].Nationality" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Guardar cambios</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
