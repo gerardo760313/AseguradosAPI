@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using AseguradosAPI.Data;
 using AseguradosAPI.Models;
 using System.Globalization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AseguradosAPI.Controllers
 {
+    [Authorize]
     [Route("[controller]/[action]")]
     public class EmployeesController : Controller
     {

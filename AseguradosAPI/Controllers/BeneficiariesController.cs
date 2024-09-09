@@ -8,9 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using AseguradosAPI.Data;
 using AseguradosAPI.Models;
 using Microsoft.Data.SqlClient;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AseguradosAPI.Controllers
 {
+    [Authorize]
     [Route("[controller]/[action]")]
     public class BeneficiariesController : Controller
     {
@@ -169,7 +171,7 @@ namespace AseguradosAPI.Controllers
         }
 
 
-        // GET: Beneficiaries/Delete/5
+        // GET: Beneficiaries/Delete/
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

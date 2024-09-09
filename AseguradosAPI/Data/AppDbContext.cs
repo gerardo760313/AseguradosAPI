@@ -9,5 +9,6 @@ namespace AseguradosAPI.Data
 
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Beneficiary> Beneficiaries { get; set; }
+        public DbSet<Users> Users { get; set; }
     }
 }
